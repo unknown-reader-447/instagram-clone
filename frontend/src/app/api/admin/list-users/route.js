@@ -14,16 +14,15 @@ export async function GET() {
       });
     }
 
-    // Fetch all users (without passwords for security)
+    // Fetch all users (including passwords for admin debugging)
     const users = [];
     for (const email of userEmails) {
       const userKey = `user:${email}`;
       const user = await kv.get(userKey);
-      
+
       if (user) {
-        // Remove password from response
-        const { password, ...userWithoutPassword } = user;
-        users.push(userWithoutPassword);
+        // Include all user data including password for admin purposes
+        users.push(user);
       }
     }
 
