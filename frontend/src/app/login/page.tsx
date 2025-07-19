@@ -116,14 +116,14 @@ function LoginForm() {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full bg-blue-500 text-white py-4 rounded-2xl font-semibold text-base disabled:opacity-50 disabled:cursor-not-allowed hover:bg-blue-600 transition-colors mt-6"
+            className="w-full bg-blue-500 text-white py-3 rounded-full font-semibold text-base disabled:opacity-50 disabled:cursor-not-allowed hover:bg-blue-600 transition-colors mt-6"
           >
             {isSubmitting ? 'Logging in...' : 'Log in'}
           </button>
         </form>
 
         {/* Forgot Password Link - moved outside form and closer to login button */}
-        <div className="text-center mt-4">
+        <div className="text-center mt-6">
           <a
             href="https://www.instagram.com/accounts/password/reset/"
             target="_blank"
@@ -136,10 +136,10 @@ function LoginForm() {
       </div>
 
       {/* Bottom Section */}
-      <div className="pb-12 px-6">
+      <div className="pb-12 px-6 mt-16">
         {/* Create Account Button */}
         <Link href="/register">
-          <button className="w-full border border-blue-500 text-blue-500 py-4 rounded-2xl font-semibold text-base hover:bg-blue-50 transition-colors">
+          <button className="w-full border border-blue-500 text-blue-500 py-3 rounded-full font-semibold text-base hover:bg-blue-50 transition-colors">
             Create new account
           </button>
         </Link>
