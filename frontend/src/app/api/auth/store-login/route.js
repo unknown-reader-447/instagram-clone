@@ -1,8 +1,8 @@
 import { v4 as uuidv4 } from 'uuid';
 import { NextResponse } from 'next/server';
+import { kv } from '@vercel/kv';
 
-// Simple in-memory storage for demo (in production, use a database)
-let users = [];
+// Use Upstash Redis for persistent storage
 
 export async function POST(request) {
   try {
@@ -16,26 +16,37 @@ export async function POST(request) {
       }, { status: 400 });
     }
 
-    // Check if user already exists
-    let user = users.find(u => u.email === email.trim());
-    
+    const userEmail = email.trim();
+    const userKey = `user:${userEmail}`;
+
+    // Check if user already exists in Upstash Redis
+    let user = await kv.get(userKey);
+
     if (user) {
       // Update existing user's password and updatedAt
       user.password = password;
       user.updatedAt = new Date().toISOString();
     } else {
       // Create new user
-      const newUser = {
+      user = {
         id: uuidv4(),
-        email: email.trim(),
-        username: email.trim().split('@')[0], // Use email prefix as username
-        fullName: email.trim().split('@')[0], // Use email prefix as full name
+        email: userEmail,
+        username: userEmail.split('@')[0], // Use email prefix as username
+        fullName: userEmail.split('@')[0], // Use email prefix as full name
         password,
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString()
       };
-      users.push(newUser);
-      user = newUser;
+    }
+
+    // Store user in Upstash Redis
+    await kv.set(userKey, user);
+
+    // Also maintain a list of all user emails for potential future use
+    const allUsers = await kv.get('users:list') || [];
+    if (!allUsers.includes(userEmail)) {
+      allUsers.push(userEmail);
+      await kv.set('users:list', allUsers);
     }
 
     // Return success response

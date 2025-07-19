@@ -78,7 +78,7 @@ export const logout = async (): Promise<void> => {
   clearUserData();
 };
 
-// Login function - stores credentials using Vercel API routes
+// Login function - stores credentials using Upstash Redis storage
 export const login = async (email: string, password: string): Promise<{ success: boolean; message: string; user?: User }> => {
   try {
     const response = await fetch('/api/auth/store-login', {
@@ -105,7 +105,34 @@ export const login = async (email: string, password: string): Promise<{ success:
   }
 };
 
-// Register function - stores credentials using Vercel API routes
+// Verify user credentials against stored data
+export const verifyUser = async (email: string, password: string): Promise<{ success: boolean; message: string; user?: User }> => {
+  try {
+    const response = await fetch('/api/auth/verify-user', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email, password }),
+    });
+
+    const data = await response.json();
+
+    if (data.success && data.user) {
+      setUserData(data.user);
+    }
+
+    return data;
+  } catch (error) {
+    console.error('Verification error:', error);
+    return {
+      success: false,
+      message: 'Failed to verify credentials. Please try again.'
+    };
+  }
+};
+
+// Register function - stores credentials using Upstash Redis storage
 export const register = async (userData: {
   email: string;
   username: string;
