@@ -49,8 +49,8 @@ function LoginForm() {
       {/* Main Content */}
       <div className="flex-1 flex flex-col justify-center px-6">
         {/* Instagram Logo */}
-        <div className="text-center mb-16">
-          <div className="w-20 h-20 mx-auto mb-12 flex items-center justify-center">
+        <div className="text-center mb-12">
+          <div className="w-16 h-16 mx-auto mb-8 flex items-center justify-center">
             <img
               src="/images/insta_logo_4.png"
               alt="Instagram"
@@ -120,19 +120,19 @@ function LoginForm() {
           >
             {isSubmitting ? 'Logging in...' : 'Log in'}
           </button>
-
-          {/* Forgot Password Link */}
-          <div className="text-center pt-6">
-            <a
-              href="https://www.instagram.com/accounts/password/reset/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-600 text-base"
-            >
-              Forgot password?
-            </a>
-          </div>
         </form>
+
+        {/* Forgot Password Link - moved outside form and closer to login button */}
+        <div className="text-center mt-4">
+          <a
+            href="https://www.instagram.com/accounts/password/reset/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-600 text-sm"
+          >
+            Forgot password?
+          </a>
+        </div>
       </div>
 
       {/* Bottom Section */}
