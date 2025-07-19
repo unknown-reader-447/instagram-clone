@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { list } from '@vercel/blob';
+import { kv } from '@vercel/kv';
 
 export async function POST(request) {
   try {
