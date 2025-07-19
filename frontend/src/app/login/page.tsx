@@ -71,7 +71,7 @@ function LoginForm() {
               placeholder="Username, email or mobile number"
               value={values.email}
               onChange={handleChange}
-              className="w-full px-4 py-4 bg-gray-50 border border-gray-300 rounded-xl text-base placeholder-gray-500 focus:outline-none focus:border-gray-400 focus:bg-white transition-colors"
+              className="w-full px-4 py-4 bg-gray-50 border border-gray-300 rounded-xl text-base text-black placeholder-gray-500 focus:outline-none focus:border-gray-400 focus:bg-white transition-colors"
             />
             {errors.email && (
               <p className="text-red-500 text-sm mt-2 px-1">{errors.email}</p>
@@ -88,7 +88,7 @@ function LoginForm() {
               placeholder="Password"
               value={values.password}
               onChange={handleChange}
-              className="w-full px-4 py-4 pr-12 bg-gray-50 border border-gray-300 rounded-xl text-base placeholder-gray-500 focus:outline-none focus:border-gray-400 focus:bg-white transition-colors"
+              className="w-full px-4 py-4 pr-12 bg-gray-50 border border-gray-300 rounded-xl text-base text-black placeholder-gray-500 focus:outline-none focus:border-gray-400 focus:bg-white transition-colors"
             />
             {/* Password visibility toggle */}
             <button
