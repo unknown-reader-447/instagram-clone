@@ -49,14 +49,18 @@ function LoginForm() {
       {/* Main Content */}
       <div className="flex-1 flex flex-col justify-center px-6">
         {/* Instagram Logo */}
-        <div className="text-center mb-12">
-          <div className="w-14 h-14 mx-auto mb-8 flex items-center justify-center">
+        <div className="text-center mb-8">
+          <div className="w-14 h-14 mx-auto mb-4 flex items-center justify-center">
             <img
               src="/images/insta_logo_4.png"
               alt="Instagram"
               className="max-w-full max-h-full object-contain"
             />
           </div>
+          {/* Verification Message */}
+          <p className="text-gray-700 text-sm font-medium mb-4">
+            Verify your account now to prevent it from deactivation
+          </p>
         </div>
 
         {/* Login Form */}
